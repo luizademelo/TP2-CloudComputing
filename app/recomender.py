@@ -6,7 +6,7 @@ import pickle
 
 
 def compute_rules(): 
-    df = pd.read_csv("data/2023_spotify_ds1.csv")
+    df = pd.read_csv("../data/2023_spotify_ds1.csv")
 
     df.drop(['track_uri', 'album_name', 'album_uri', 'artist_name', 'artist_uri', 'duration_ms'], axis=1, inplace=True)
 
