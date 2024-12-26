@@ -1,0 +1,15 @@
+# syntax=docker/dockerfile:1
+
+FROM python:3.9-slim-buster
+
+WORKDIR /home/luizademelo/tp2-cloud
+
+# Install dependencies
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+
+# Copy the entire project
+COPY client/ .
+
+# Run the Flask app
+CMD ["python3", "client.py"]
