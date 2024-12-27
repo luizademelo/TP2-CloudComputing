@@ -2,7 +2,7 @@ import requests
 
 def make_request(): 
     response = requests.post(
-        "http://flask-api:52049/api/recommend",
+        "http://localhost:52049/api/recommend",
         json={"songs": ["Yesterday", "Bohemian Rhapsody"]},
         headers={"Content-Type": "application/json"}
     )

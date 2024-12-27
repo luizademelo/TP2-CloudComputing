@@ -1,10 +1,9 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tp2-deployment
 spec:
-  replicas: 2
+  replicas: 1  
   selector:
     matchLabels:
       app: tp2
@@ -15,6 +14,6 @@ spec:
     spec:
       containers:
       - name: tp2
-        image: scarface54/tp2_cloud:v0
+        image: scarface54/flask-api:0.1
         ports:
-        - containerPort: 5008
+        - containerPort: 52049
