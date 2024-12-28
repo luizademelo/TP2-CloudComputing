@@ -4,9 +4,8 @@ from datetime import datetime
 app = Flask(__name__)
 
 
-# from recomender import compute_rules
 import pickle
-from recomender import compute_rules
+# from recomender import compute_rules
 
 @app.route('/')
 def home():
@@ -15,8 +14,8 @@ def home():
 @app.route("/api/recommend", methods=["POST"])
 def recommend(): 
     data = request.json
-    compute_rules(data) 
-    app.model = pickle.load(open("rules.pickle", "rb"))
+    # compute_rules(data) 
+    app.model = pickle.load(open("data/rules.pickle", "rb"))
 
 
     recommendations = app.model

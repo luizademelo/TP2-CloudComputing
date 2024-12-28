@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tp2-deployment-flask-api
+  name: tp2-deployment-model
 spec:
   replicas: 1
   selector:
@@ -13,23 +13,16 @@ spec:
         app: luizagomes-project  # Label used for identifying the application
     spec:
       containers:
-      - name: flask-api
-        image: scarface54/flask-api:0.1
+      - name: model
+        image: scarface54/model:0.1  # Image to generate the model
         ports:
         - containerPort: 52049
         env:
         - name: DATASET_URL
-          value: "https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds1.csv"
+          value: "https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds1.csv"  # Dataset URL
         volumeMounts:
-        - mountPath: /data  # Shared path inside the container where the model will be available
+        - mountPath: /data  # Shared path where rules.pickle will be stored
           name: ml-model-volume  # Name of the volume from the PVC
-        readinessProbe:
-          exec:
-            command:
-              - cat
-              - /data/rules.pickle  # Checks for the existence of rules.pickle file
-          initialDelaySeconds: 10
-          periodSeconds: 5
       volumes:
       - name: ml-model-volume
         persistentVolumeClaim:

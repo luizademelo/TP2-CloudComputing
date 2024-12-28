@@ -9,15 +9,11 @@ import os
 def is_relevant_rule(antecedents, user_songs):
     return any(song in antecedents for song in user_songs)
 
-def compute_rules(json_data): 
+def compute_rules(): 
 
     dataset_url = os.getenv('DATASET_URL')
 
-    if not json_data or 'songs' not in json_data:
-        df_songs = pd.read_csv("data/2023_spotify_songs.csv")
-        user_songs = [random.choice(df_songs['track_name'].dropna().unique())]
 
-    user_songs = json_data['songs']
 
     df = pd.read_csv(dataset_url)
 
@@ -44,14 +40,7 @@ def compute_rules(json_data):
     recommendations = set()
     for _, row in rules.iterrows(): 
         recommendations.update(row['consequents'])
-    for song in user_songs:
-        if song not in rules['antecedents']: 
-            continue
-
-        # Find relevant rules for each song
-        relevant_rules = rules[rules['antecedents'].apply(lambda x: song in x)]
-        for _, row in relevant_rules.iterrows():
-            recommendations.update(row['consequents'])
+  
 
     print("association rules computed")
     print(recommendations)
@@ -60,6 +49,9 @@ def compute_rules(json_data):
 
 
 
-    pickle.dump(list(recommendations), open("rules.pickle", "wb"))
+    pickle.dump(list(recommendations), open("data/rules.pickle", "wb"))
     # print(rules)
     # return rules
+
+if __name__ == "__main__": 
+    compute_rules()
