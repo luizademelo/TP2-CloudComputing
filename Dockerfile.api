@@ -16,6 +16,8 @@ COPY app/ .
 # ENV FLASK_RUN_HOST=0.0.0.0
 # ENV FLASK_RUN_PORT=52049
 
+# ENV DATASET_URL="https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds1.csv"
+
 EXPOSE 52049
 
 

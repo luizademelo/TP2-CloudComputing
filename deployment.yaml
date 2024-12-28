@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: tp2-deployment
 spec:
-  replicas: 1  
+  replicas: 1
   selector:
     matchLabels:
       app: tp2
@@ -17,3 +17,6 @@ spec:
         image: scarface54/flask-api:0.1
         ports:
         - containerPort: 52049
+        env:
+        - name: DATASET_URL
+          value: "https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds1.csv"  # Replace with your actual dataset URL

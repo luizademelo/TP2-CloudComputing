@@ -20,4 +20,7 @@ wget --server-response \
     --post-data '{"songs": ["Yesterday", "Bohemian Rhapsody"]}' \
     http://<meu-ip>:30049/api/recommender
 ```
-Onde `<meu-ip>` é o endereço IP da sua máquina host
+Onde `<meu-ip>` é o endereço IP interno, que pode ser obtido com o comando abaixo
+```
+kubectl get nodes -o wide
+```
