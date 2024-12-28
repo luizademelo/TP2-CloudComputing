@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: project2-pvc-luizagomes  # Name of the PVC
+  namespace: luizagomes  # Ensure this matches the namespace of the PV
+spec:
+  accessModes:
+    - ReadWriteMany  # Allow multiple pods to read/write
+  resources:
+    requests:
+      storage: 1Gi  # Requesting the same storage size as the PV
+  selector:
+    matchLabels:
+      namespace: luizagomes  # Match the label from the PV to bind with it
