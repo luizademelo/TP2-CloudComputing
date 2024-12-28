@@ -24,3 +24,4 @@ Onde `<meu-ip>` é o endereço IP interno, que pode ser obtido com o comando aba
 ```
 kubectl get nodes -o wide
 ```
+Na VM do curso pode deixar como localhost
