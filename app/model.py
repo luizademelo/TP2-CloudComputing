@@ -49,7 +49,7 @@ def compute_rules():
 
 
 
-    pickle.dump(list(recommendations), open("data/rules.pickle", "wb"))
+    pickle.dump(list(recommendations), open("rules.pickle", "wb"))
     # print(rules)
     # return rules
 
