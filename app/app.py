@@ -14,7 +14,7 @@ def home():
 @app.route("/api/recommend", methods=["POST"])
 def recommend(): 
     data = request.json
-    # compute_rules(data) 
+    compute_rules(data) 
     app.model = pickle.load(open("data/rules.pickle", "rb"))
 
 
