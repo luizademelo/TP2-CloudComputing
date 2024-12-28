@@ -23,13 +23,6 @@ spec:
         volumeMounts:
         - mountPath: /data  # Shared path inside the container where the model will be available
           name: ml-model-volume  # Name of the volume from the PVC
-        readinessProbe:
-          exec:
-            command:
-              - cat
-              - /data/rules.pickle  # Checks for the existence of rules.pickle file
-          initialDelaySeconds: 10
-          periodSeconds: 5
       volumes:
       - name: ml-model-volume
         persistentVolumeClaim:
