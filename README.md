@@ -1,4 +1,4 @@
-# Trabalho Prático 2 - Computação em nuvem
+# Trabalho Prático 2 - Computação em nuvem 
 
 ## Executando o Docker
 Para montar e executar os contâineres Docker, execute o comando abaixo: 

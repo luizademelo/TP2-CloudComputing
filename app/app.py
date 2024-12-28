@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 
 import pickle
-# from recomender import compute_rules
+from model import compute_rules
 
 @app.route('/')
 def home():
