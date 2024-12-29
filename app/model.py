@@ -30,8 +30,6 @@ def compute_rules():
 
     frequent_itemsets = fpgrowth(encoded_df, min_support=0.05, use_colnames=True)
 
-    # print(frequent_itemsets)
-    # print("frequent itemsets computed")
 
     rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=0.6, num_itemsets=2)
 
@@ -42,14 +40,10 @@ def compute_rules():
         recommendations.update(row['consequents'])
   
 
-    # print("association rules computed")
-    # print(recommendations)
     rules['antecedents'] = rules['antecedents'].apply(list)
     rules['consequents'] = rules['consequents'].apply(list)
 
 
 
     pickle.dump(list(recommendations), open("/data/rules.pickle", "wb"))
-    # print(rules)
-    # return rules
 

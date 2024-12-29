@@ -19,7 +19,7 @@ def recommend():
 
 
     recommendations = app.model
-    return jsonify({"songs": recommendations, "version": "1.0.0", "model_date": datetime.now().strftime("%Y-%m-%d")})
+    return jsonify({"songs": recommendations, "version": "2.0.0", "model_date": datetime.now().strftime("%Y-%m-%d")})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
