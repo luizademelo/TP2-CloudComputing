@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendations</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>Music Recommendations</h1>
+    <form id="recommendation-form">
+        <label for="user-data">Enter your preferences:</label><br>
+        <textarea id="user-data" name="user-data" rows="4" cols="50"></textarea><br>
+        <button type="submit">Get Recommendations</button>
+    </form>
+    <div id="results"></div>
+
+    <script>
+        document.getElementById("recommendation-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const userData = document.getElementById("user-data").value;
+
+            const response = await fetch("/api/recommend", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_data: userData })
+            });
+
+            const result = await response.json();
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = `
+                <h2>Recommendations</h2>
+                <p>Version: ${result.version}</p>
+                <p>Model Date: ${result.model_date}</p>
+                <ul>
+                    ${result.songs.map(song => `<li>${song}</li>`).join('')}
+                </ul>
+            `;
+        });
+    </script>
+</body>
+
+</html>

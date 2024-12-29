@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from datetime import datetime
 
 app = Flask(__name__)
@@ -9,7 +9,7 @@ from model import compute_rules
 
 @app.route('/')
 def home():
-   return "hello world!"
+   return render_template("index.html")
 
 @app.route("/api/recommend", methods=["POST"])
 def recommend(): 
