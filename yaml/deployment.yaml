@@ -19,7 +19,7 @@ spec:
         - containerPort: 52049
         env:
         - name: DATASET_URL
-          value: "https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds1.csv"
+          value: "https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds2.csv"
         volumeMounts:
         - mountPath: /data  # Shared path inside the container where the model will be available
           name: ml-model-volume  # Name of the volume from the PVC
