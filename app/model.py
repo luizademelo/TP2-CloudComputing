@@ -9,7 +9,7 @@ import os
 def is_relevant_rule(antecedents, user_songs):
     return any(song in antecedents for song in user_songs)
 
-def compute_rules(): 
+def compute_rules(data=None): 
 
     dataset_url = os.getenv('DATASET_URL')
 
@@ -45,5 +45,5 @@ def compute_rules():
 
 
 
-    pickle.dump(list(recommendations), open("/data/rules.pickle", "wb"))
+    pickle.dump(list(recommendations), open("data/rules.pickle", "wb"))
 
