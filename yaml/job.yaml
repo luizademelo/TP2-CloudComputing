@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: tp2-job-model
+spec:
+  template:
+    metadata:
+      labels:
+        app: luizagomes-project 
+    spec:
+      containers:
+      - name: model
+        image: scarface54/model:0.3  
+        env:
+        - name: DATASET_URL
+          value: "https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds1.csv"  
+        volumeMounts:
+        - mountPath: /data  
+          name: ml-model-volume  
+        command: ["python3", "model.py"] 
+      volumes:
+      - name: ml-model-volume
+        persistentVolumeClaim:
+          claimName: project2-pvc-luizagomes 
+      restartPolicy: Never  
+  backoffLimit: 3  
