@@ -6,11 +6,11 @@ spec:
   replicas: 15
   selector:
     matchLabels:
-      app: luizagomes-project  # Label used for identifying the application
+      app: luizagomes-project  
   template:
     metadata:
       labels:
-        app: luizagomes-project  # Label used for identifying the application
+        app: luizagomes-project  
     spec:
       containers:
       - name: flask-api
@@ -21,9 +21,9 @@ spec:
         - name: DATASET_URL
           value: "https://raw.githubusercontent.com/luizademelo/TP2-CloudComputing/refs/heads/main/data/2023_spotify_ds2.csv"
         volumeMounts:
-        - mountPath: /data  # Shared path inside the container where the model will be available
-          name: ml-model-volume  # Name of the volume from the PVC
+        - mountPath: /data  
+          name: ml-model-volume  
       volumes:
       - name: ml-model-volume
         persistentVolumeClaim:
-          claimName: project2-pvc-luizagomes  # PVC to bind to
+          claimName: project2-pvc-luizagomes 

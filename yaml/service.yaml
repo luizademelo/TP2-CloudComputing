@@ -4,10 +4,10 @@ metadata:
   name: tp2-service
 spec:
   selector:
-    app: luizagomes-project  # Updated to match the label from the deployment
+    app: luizagomes-project  
   ports:
     - protocol: TCP
-      port: 52049        # Port exposed inside the cluster
-      targetPort: 52049  # Port inside the container
-      nodePort: 30049    # Port on the nodes to access externally
+      port: 52049        # Porta dentro do cluster
+      targetPort: 52049  # Porta dentro do container
+      nodePort: 30049    # Porta para acessar externamente
   type: NodePort

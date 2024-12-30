@@ -13,8 +13,6 @@ def compute_rules(data=None):
 
     dataset_url = os.getenv('DATASET_URL')
 
-
-
     df = pd.read_csv(dataset_url)
 
     df.drop(['track_uri', 'album_name', 'album_uri', 'artist_name', 'artist_uri', 'duration_ms'], axis=1, inplace=True)
