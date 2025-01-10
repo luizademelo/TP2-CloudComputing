@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: tp2-deployment-flask-api
 spec:
-  replicas: 15
+  replicas: 2
   selector:
     matchLabels:
       app: luizagomes-project  
